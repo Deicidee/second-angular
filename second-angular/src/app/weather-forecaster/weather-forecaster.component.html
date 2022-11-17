@@ -1,0 +1,14 @@
+<p>weather-forecaster works!</p>
+<form class="weather">
+    <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="kutyaFlag" [rangePicker]="dateRange">
+            <input id="startdate" formControlName="startDate" matStartDate placeholder="Start date">
+            <input id="enddate" formControlName="endDate" matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="dateRange"></mat-datepicker-toggle>
+        <mat-date-range-picker #dateRange></mat-date-range-picker>
+    </mat-form-field>
+</form>
+
