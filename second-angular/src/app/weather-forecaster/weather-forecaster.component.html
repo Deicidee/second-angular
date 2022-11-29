@@ -2,7 +2,7 @@
 <form class="weather">
     <mat-form-field appearance="fill">
         <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [formGroup]="kutyaFlag" [rangePicker]="dateRange">
+        <mat-date-range-input [formGroup]="weatherDatePicker" [rangePicker]="dateRange" [min]="minDate" [max]="maxDate">
             <input id="startdate" formControlName="startDate" matStartDate placeholder="Start date">
             <input id="enddate" formControlName="endDate" matEndDate placeholder="End date">
         </mat-date-range-input>
@@ -11,4 +11,21 @@
         <mat-date-range-picker #dateRange></mat-date-range-picker>
     </mat-form-field>
 </form>
+<div class="weatherCard" *ngFor="let weatherData of (weatherDatas | async)">
+    <h2 class="chosenDateRange">{{weatherData.date}}</h2>
+    <h2 class="Temperatures">{{weatherData.temperature}}</h2>
+    <h2 class="maxTemperatures">{{weatherData.maxTemperature}}</h2>
+    <h2 class="winds">{{weatherData.wind}}</h2>
+    <h2 class="precipitations">{{weatherData.precip}}</h2>
 
+
+
+    <!--
+     *ngFor="let pages of Anypage"
+     *ngFor="let weatherData of weatherDatas"
+    date
+    celsius
+    pressure
+    how the temperature feels
+    -->
+</div>
