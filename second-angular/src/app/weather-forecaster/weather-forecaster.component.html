@@ -1,31 +1,37 @@
-<p>weather-forecaster works!</p>
-<form class="weather">
-    <mat-form-field appearance="fill">
-        <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [formGroup]="weatherDatePicker" [rangePicker]="dateRange" [min]="minDate" [max]="maxDate">
-            <input id="startdate" formControlName="startDate" matStartDate placeholder="Start date">
-            <input id="enddate" formControlName="endDate" matEndDate placeholder="End date">
-        </mat-date-range-input>
-        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="dateRange"></mat-datepicker-toggle>
-        <mat-date-range-picker #dateRange></mat-date-range-picker>
-    </mat-form-field>
-</form>
-<div class="weatherCard" *ngFor="let weatherData of (weatherDatas | async)">
-    <h2 class="chosenDateRange">{{weatherData.date}}</h2>
-    <h2 class="Temperatures">{{weatherData.temperature}}</h2>
-    <h2 class="maxTemperatures">{{weatherData.maxTemperature}}</h2>
-    <h2 class="winds">{{weatherData.wind}}</h2>
-    <h2 class="precipitations">{{weatherData.precip}}</h2>
-
-
-
-    <!--
-     *ngFor="let pages of Anypage"
-     *ngFor="let weatherData of weatherDatas"
-    date
-    celsius
-    pressure
-    how the temperature feels
-    -->
+<div class="wrapper">
+    <form class="weather">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="weatherDatePicker" [rangePicker]="dateRange" [min]="minDate"
+                [max]="maxDate">
+                <input id="startdate" formControlName="startDate" matStartDate placeholder="Start date">
+                <input id="enddate" formControlName="endDate" matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="dateRange"></mat-datepicker-toggle>
+            <mat-date-range-picker #dateRange></mat-date-range-picker>
+        </mat-form-field>
+    </form>
+    <div class="weatherCard" *ngFor="let weatherData of (weatherDatas | async)">
+        <div class="chosenDateRangeClass">
+            <div class="chosenDateRange">{{weatherData.date}}</div>
+            <div class="imamges">
+                <img [src]="getImgUrl(weatherData)">
+                <div class="imgText">{{getImgText(weatherData)}}</div>
+            </div>
+        </div>
+        <div class="maxTemperaturesClass">
+            <h2 class="maxTemperatures">{{weatherData.maxTemperature}} °c</h2>
+        </div>
+        <div class="windClass">
+            <div class="wind">Wind: {{weatherData.wind}} kmph </div>
+            <div class="precipClass">
+                <div class="precip">Precip: {{weatherData.precip}} mm</div>
+            </div>
+        </div>
+        <div class="temperaturesClass">
+            <div class="fillerText">How the temperature feels?</div>
+            <h2 class="temperatures">{{weatherData.temperature}} °c</h2>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,55 @@
+.wrapper{
+    padding: 1em;
+    .weather {
+        background-color: lightgray;
+        max-width: 260px;
+        margin-bottom: 70px;
+    }
+    .weatherCard {
+        display: flex;
+        background-color: lightsteelblue;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        width: fit-content;
+        gap: 5em;
+        padding: 1em;
+        margin-bottom: 30px;
+        .chosenDateRangeClass{
+            .chosenDateRange {
+                text-align: left;
+            }
+            .imamges {
+                text-align: center;
+                .imgText{
+                    font-weight: bold;
+                    min-width: 90px;
+                }
+            }
+        }
+        .maxTemperaturesClass {
+            display: flex;
+            justify-content: center;
+            min-width: 80px;
+        }
+        @media screen and (max-width: 750px){
+         .temperaturesClass{
+            display: none;
+         }
+        }
+        .temperaturesClass{
+            border: 5px white solid;
+            padding: 5px;
+            min-width: 80px;
+        }
+        .windClass{
+            min-width: 120px;
+        }
+    }
+}
+
+
+
+
+
+
