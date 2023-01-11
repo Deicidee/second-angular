@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
-import { debounceTime, map, merge, Observable } from 'rxjs';
+import { debounceTime, filter, map, merge, Observable } from 'rxjs';
 import { InMemoryDataService } from '../date-api-service';
 
 export interface WeatherData {
@@ -46,7 +46,9 @@ export class WeatherForecasterComponent implements OnInit {
       this.getWeatherForcasterFormControl('startDate').valueChanges,
       this.getWeatherForcasterFormControl('endDate').valueChanges,
     ).pipe(
-      debounceTime(500)
+      filter(x => {
+        return !!(this.getWeatherForcasterFormControl('startDate').value && this.getWeatherForcasterFormControl('endDate').value) 
+      })
     ).subscribe((dateDatas) => {
       this.weatherDatas = this.inMemoryData.getWeather(this.getWeatherForcasterFormValue('startDate'), this.getWeatherForcasterFormValue('endDate'))
     })
